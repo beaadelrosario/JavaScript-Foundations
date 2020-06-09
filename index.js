@@ -55,20 +55,10 @@ console.log (monthlyRate)
 If your name is `Oscar` mortgageCalculator() should return "Oscar, your monthly rate is 1073.64"
 */
 
-function mortgageCalculater (
-    let principal = 200000; /*principal*/
-    let interestRate = 0.05; /*interest rate*/
-    let years = 30; /*years/periods*/
-    const name = "Bea";
-    const monthlyInterestRate = interestRate/12; 
-    const periods = years*12;
-    let n1 = Math.pow((1 + monthlyInterestRate), periods);
-    let n2 = n1 * monthlyInterestRate;
-    let denominator = n1 - 1;
-    let monthlyRate = principal*(n2/denominator);
-    console.log (monthlyRate)
-)
- return "{Bea}, your monthly rate is ${monthlyRate}"
+function mortgageCalculator() {
+    return (`${name}, your monthly rate is ${monthlyRate}`)
+}
+    console.log(mortgageCalculator());
 
 
 // 🏡 Task 4: Arguments and Parameters
