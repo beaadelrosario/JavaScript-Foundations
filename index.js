@@ -68,20 +68,21 @@ For example,
 mortgageCalculator(200000, 0.05, 30); <-- should return 1,073.64
 */
 
-/*function mortgageCalculator (P, I, N) {
-    let rate = P * ((I * Math.pow((1+I), N)) / (Math.pow((1 + I), N)) - 1);
+function mortgageCalculator (P, I, N) {
+    //let rate = P * ((I * Math.pow((1+I), N)) / (Math.pow((1 + I), N)) - 1);
+    let rate = (P * ((I / 12) * Math.pow(1 + (I / 12), (N * 12))) / (Math.pow(1 + (I / 12), (N * 12)) - 1))
     return rate;
 }
-console.log(mortgageCalculator(200000, 0.05, 40));*/
+console.log(mortgageCalculator(200000, 0.05, 40));
 
-/*MY ANSWER BELOW*/
 
 function rate (P, I, N) {
-    let monthlyRate = p * ((monthlyInterestRate * Math.pow((1 + monthlyInterestRate), periods)) / (Math.pow((1 + monthlyInterestRate), periods) - 1));
+    let monthlyRate = P * ((monthlyInterestRate * Math.pow((1 + monthlyInterestRate), periods)) / (Math.pow((1 + monthlyInterestRate), periods) - 1));
    return monthlyRate;
 }
 
 console.log (mortgageCalculator(200000, 0.05, 30))
+
 
 
 // 🏡 Task 5: Conditionals
@@ -92,16 +93,16 @@ Then, add control flow within your function such that IF creditScore is above 74
 Hint: To drop an interest rate by 5% you can take monthlyRate and multiply it by 0.95. Similarly, to increase an interest rate by 5% you'd do monthlyRate * 1.05. 
 */
 
-function rate (P, I, N, creditScore) {
+function adjustedRate (P, I, N, creditScore) {
     if (creditScore > 740) {
-        var I = I - 0.005;
+         I = I - 0.05;
     } else if (creditScore < 660) {
-        var I = I + 0.005;
+         I = I + 0.005;
     }
-    return
+    return mortgageCalculator (P, I, N);
 }
-
-console.log (mortgageCalculator(200000, 0.05, 30, 800))
+//console.log ('test')*/
+console.log (adjustedRate(200000, 0.05, 30, 500))
 
 // 🏡 Task 6: Loops
 /* Write a new function called variableInterestRate. This function should be the same as mortgageCalculator, except it should console.log the monthly payment for 10 different interest rates at 0.5% increments plus or minus 2% from the inputted interest rate. Complete these calculations using a for loop.
@@ -144,3 +145,4 @@ variableInterestRate(200000, 0.04, 30)
 
 
 /* 🏡  Refactor your `variableInterestRate()` function to accept an array of interest rates (make sure to copy and paste as to not lose your work!) */
+
